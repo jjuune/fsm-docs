@@ -1,0 +1,29 @@
+site_name: Phase1 문서(v0.1.1)
+theme:
+  name: material
+nav:
+- 00 Overview:
+  - 프로젝트 정의: 00-overview/01-project.md
+  - 역할과 책임(RBAC): 00-overview/02-roles.md
+  - 범위(In/Out): 00-overview/03-scope.md
+  - 가정/리스크: 00-overview/04-assumptions-risks.md
+- 10 Domain:
+  - WorkOrder FSM: 10-domain/01-workorder-fsm.md
+  - 체크리스트/완료 정책: 10-domain/02-checklist-policy.md
+- 20 Product:
+  - 권한 매트릭스(RBAC Matrix): 20-product/00-rbac.md
+  - 화면 지도: 20-product/01-screen-map.md
+  - Admin: 20-product/02-admin.md
+  - Team Manager: 20-product/03-team-manager.md
+  - Technician: 20-product/04-technician.md
+- 30 Implementation:
+  - M-02 통합 스펙: 30-implementation/01-m02-spec.md
+  - M-02 컴포넌트/리스크: 30-implementation/02-m02-components-risk.md
+  - API: 30-implementation/03-api.md
+  - CRUD 매트릭스: 30-implementation/04-crud-matrix.md
+- 40 Data:
+  - ERD + Field Dictionary: 40-data/01-erd.md
+- 90 Appendix:
+  - 용어집: 90-appendix/01-glossary.md
+  - 변경 이력: 90-appendix/02-changelog.md
+  - 용어/문구 세트: 90-appendix/03-copy.md
