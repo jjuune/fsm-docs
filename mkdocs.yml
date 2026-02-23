@@ -1,8 +1,9 @@
-site_name: Phase1 문서(v0.1.1)
+site_name: Phase1 문서(v0.2)
 theme:
   name: material
 nav:
 - 00 Overview:
+  - Phase 1 SSoT: 00-overview/00-phase1-functional-spec.md
   - 프로젝트 정의: 00-overview/01-project.md
   - 역할과 책임(RBAC): 00-overview/02-roles.md
   - 범위(In/Out): 00-overview/03-scope.md
@@ -10,17 +11,24 @@ nav:
 - 10 Domain:
   - WorkOrder FSM: 10-domain/01-workorder-fsm.md
   - 체크리스트/완료 정책: 10-domain/02-checklist-policy.md
+  - Org/Team 프로필: 10-domain/05-org-team-profile.md
 - 20 Product:
   - 권한 매트릭스(RBAC Matrix): 20-product/00-rbac.md
+  - 로그인/홈(랜딩): 20-product/00-auth-and-home.md
   - 화면 지도: 20-product/01-screen-map.md
   - Admin: 20-product/02-admin.md
+  - A-00 Admin 대시보드: 20-product/11-a00-admin-dashboard.md
+  - A-01 팀 관리: 20-product/10-a01-team-management.md
   - Team Manager: 20-product/03-team-manager.md
+  - T-00 팀 대시보드: 20-product/21-t00-team-dashboard.md
+  - T-04 기사 관리: 20-product/20-t04-technician-management.md
   - Technician: 20-product/04-technician.md
 - 30 Implementation:
   - M-02 통합 스펙: 30-implementation/01-m02-spec.md
   - M-02 컴포넌트/리스크: 30-implementation/02-m02-components-risk.md
-  - API: 30-implementation/03-api.md
+  - API(WorkOrder): 30-implementation/03-api.md
   - CRUD 매트릭스: 30-implementation/04-crud-matrix.md
+  - API 최소세트(Phase 1): 30-implementation/10-api-minimum-set-phase1.md
 - 40 Data:
   - ERD + Field Dictionary: 40-data/01-erd.md
 - 90 Appendix:

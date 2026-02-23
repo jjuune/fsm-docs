@@ -34,17 +34,26 @@
 ## 📌 프로젝트 범위 (Scope)
 
 ### ✅ 포함 범위 (In-Scope)
-- **권한 체계:** Admin / Team Manager / Technician
+- **권한 체계:** Admin / Team Manager / Technician (ORG/TEAM/SELF 스코프)
 - **작업 관리:** WorkOrder 기반 설치·AS 프로세스
 - **현장 증빙:** 체크리스트 및 디지털 서명 수집
 - **자동화:** PDF 문서 생성 및 이메일/문자 발송
 - **데이터:** 작업 이력 조회 및 기초 통계
+- **인증/홍:** L-01 로그인, H-01 역할별 랜딩 라우팅
+- **팀 관리 (A-01):** Admin의 팀 생성·수정·비활성화 CRUD-lite
+- **기사 관리 (T-04):** TM의 기사 초대·수정·비활성화 CRUD-lite
+- **운영 대시보드 MVP (A-00/T-00):** 팀·기사별 상태 카운트 카드 (성과평가 아님)
+- **조직/팀 기본정보 (OrgProfile/TeamProfile):** 명칭/주소/연락처 관리
 
 ### ❌ 제외 범위 (Out-of-Scope)
 - 영업 관리 모듈 및 가격 정책/프로모션
 - 정산 및 회계 시스템 연동
 - 고급 재고 관리 시스템
 - 외부 고객 전용 SaaS 기능
+- **Team/User Hard delete** (비활성화만 허용, Phase 2에서 검토)
+- **고급 리포트 / 성과 지표** (운영지표 MVP만)
+- **PDF 사업자정보 자동삽입** (서식 자동화 고도화)
+- **AuditLog 전체 노출** (Phase 2 이후)
 
 ---
 
@@ -63,8 +72,10 @@
 ---
 
 ## 연관 문서
+- [Phase 1 기능 명세서 (SSoT)](00-phase1-functional-spec.md)
 - [역할과 책임(RBAC)](02-roles.md)
-- [프로젝트 범위(In/Out)](03-scope.md)
+- [프로생트 범위(In/Out)](03-scope.md)
 
 ## 변경 이력
+- **v0.2:** In-Scope에 로그인/팀관리/기사관리/대시보드/OrgProfile 추가, Out-of-Scope에 Hard delete/고급리포트/AuditLog 추가, SSoT 링크 연결 (2026-02-23)
 - **v0.1:** 통합문서 기반 초안 정리 (2025-02-20)
