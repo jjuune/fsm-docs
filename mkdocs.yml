@@ -23,6 +23,7 @@ nav:
   - T-00 팀 대시보드: 20-product/21-t00-team-dashboard.md
   - T-04 기사 관리: 20-product/20-t04-technician-management.md
   - Technician: 20-product/04-technician.md
+  - M-01 기사 작업 목록 : 20-product/05-m01-spec.md
 - 30 Implementation:
   - M-02 통합 스펙: 30-implementation/01-m02-spec.md
   - M-02 컴포넌트/리스크: 30-implementation/02-m02-components-risk.md

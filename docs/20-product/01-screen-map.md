@@ -34,7 +34,7 @@
 
 ## 연관 문서
 - [Admin](02-admin.md)
-- [Team Manager](03-team-manager.md)
+- [Team Manager](05-m01-spec.md)
 - [Technician](04-technician.md)
 
 ## 변경 이력
