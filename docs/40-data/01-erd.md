@@ -8,6 +8,7 @@
 ## 🗺️ 1. ERD 논리 모델 (Mermaid)
 ```mermaid
 erDiagram
+    ORGANIZATION ||--o{ TEAM : manages
     TEAM ||--o{ USER : contains
     CUSTOMER ||--o{ SITE : owns
     CUSTOMER ||--o{ WORK_ORDER : requests
@@ -27,8 +28,9 @@ erDiagram
 ### 2.1 조직 및 사용자
 | 테이블 | 설명 | 핵심 필드 |
 | :--- | :--- | :--- |
-| **TEAM** | 본사 소속 팀/부서 | `id`, `name`, `is_active` |
-| **USER** | 시스템 사용자 | `email`, `role(ADMIN/TM/TECH)`, `team_id` |
+| **ORGANIZATION** | 웈사(본사) 프로필 1개 | `legal_name`, `biz_reg_no`, `address`, `phone`, `email`, `created_at`, `updated_at` |
+| **TEAM** | 본사 소속 팀/센터 | `id`, `name`(**Immutable**), `address`, `contact_phone`, `status(ACTIVE/INACTIVE)`, `deactivated_at`, `deactivated_reason`, `org_id` |
+| **USER** | 시스템 사용자 | `email`, `role(ADMIN/TM/TECH)`, `team_id`, `status(ACTIVE/INACTIVE)`, `deactivated_at` |
 
 ### 2.2 고객 및 현장
 | 테이블 | 설명 | 핵심 필드 |
@@ -52,8 +54,19 @@ erDiagram
 
 ---
 
-## 📅 4. 구현 마일스톤 (데이터 중심)
-1. **M1 (코어):** 인증 및 기초 마스터(Team, User, Customer, Site) 구축
+## ⚠️ 5. Team / User Lifecycle 정책 (Phase 1)
+
+| 엔티티 | 허용 조작 | 금지 조작 | 비고 |
+| :--- | :--- | :--- | :--- |
+| **TEAM** | `INACTIVE` 비활성화 | **Hard delete** | `name` immutable |
+| **USER** | `INACTIVE` 비활성화 | **Hard delete** | 비활성 시 로그인/배정 차단 |
+
+> **Team.name 불변 정책:** 코드를 포함한 모든 연관 시스템에서 일관되게 유지됩니다. API에서 `name` 필드 변경 요청은 서버가 실윤하게 무시합니다.
+
+---
+
+## 📅 6. 구현 마일스톤 (데이터 중심)
+1. **M1 (코어):** 인증 및 기초 마스터(Organization, Team, User, Customer, Site) 구축
 2. **M2 (프로세스):** WorkOrder 상태 전이 및 배정 로직 구현
 3. **M3 (증빙):** 체크리스트 자동 생성 및 파일/서명 업로드 연동
 4. **M4 (안정화):** Audit Log 및 발송 결과 트래킹
@@ -63,6 +76,8 @@ erDiagram
 ## 연관 문서
 - [CRUD 매트릭스](../30-implementation/04-crud-matrix.md)
 - [API 명세서](../30-implementation/03-api.md)
+- [Org/Team 프로필 정의](../10-domain/05-org-team-profile.md)
 
 ## 변경 이력
+- **v0.2:** ORGANIZATION 엔티티 추가(OrgProfile), Team/User lifecycle 필드 추가, Mermaid ERD 업데이트 (2026-02-23)
 - **v0.1:** 논리 모델 및 단계별 구현 전략 수립 (2025-02-20)
