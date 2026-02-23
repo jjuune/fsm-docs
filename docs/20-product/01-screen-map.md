@@ -34,8 +34,9 @@
 
 ## 연관 문서
 - [Admin](02-admin.md)
-- [Team Manager](05-m01-spec.md)
+- [Team Manager](03-team-manager.md)
 - [Technician](04-technician.md)
+- [M-01 기사 작업 목록](05-m01-spec.md)
 
 ## 변경 이력
 - v0.1: 통합문서 기반 초안 정리
