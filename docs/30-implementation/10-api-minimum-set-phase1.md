@@ -124,6 +124,50 @@
 
 ---
 
+## 📘 5. 권한 가드 예시 (필수, Phase 1)
+
+서버는 모든 API에서 RBAC를 **반드시** 강제한다. (UI에서 숨겨도 서버가 최종 방어)
+
+### 5.1 원칙
+- **Admin = ORG**: 조직 전체 데이터 접근 가능
+- **Team Manager = TEAM**: `assigned_team_id = my_team_id` 범위만
+- **Technician = SELF**: `assigned_technician_id = me` 범위만
+
+### 5.2 예시 1) Technician 내 작업 목록: SELF 강제
+`GET /me/workorders`
+
+- 서버는 토큰의 `user_id`를 기준으로 **반드시** 아래 조건을 적용한다.
+  - `workorder.assigned_technician_id = me`
+- 클라이언트가 임의로 `assigned_technician_id`를 넘기거나 조작해도 무시한다.
+
+### 5.3 예시 2) Team Manager 기사 목록/관리: TEAM 강제
+`GET /team/technicians`
+`POST /team/technicians`
+`PATCH /team/technicians/{id}`
+
+- 조회/수정 대상 `User.team_id`가 **반드시** `my_team_id`여야 한다.
+- Team Manager는 **다른 팀** 기사 정보를 조회/수정/비활성화할 수 없다.
+
+### 5.4 예시 3) Team Manager 팀 작업함: TEAM 강제
+`GET /team/workorders`
+
+- 조회 조건: `workorder.assigned_team_id = my_team_id`
+- (정책 토글) 기사 재배정이 허용된 경우에도 TEAM 범위를 벗어난 배정은 불가
+
+### 5.5 예시 4) Admin 팀 관리/통계: ORG 강제
+`GET /admin/teams`
+`POST /admin/teams`
+`GET /admin/teams/{id}/stats`
+
+- Admin은 ORG 범위 접근 가능
+- 다만 팀 비활성화/정책 변경은 **Audit 대상(Phase 2)** 로 분리 가능
+
+### 5.6 예시 5) 비활성 계정/팀 처리 (권장)
+- `User.status = INACTIVE` 이면 로그인/토큰 갱신을 차단한다.
+- `Team.status = INACTIVE` 인 팀의 신규 배정/진행 전이는 정책에 따라 차단한다.
+
+---
+
 ## 공통 규칙
 - **Base URL:** `/api/v1`
 - **인증:** `Authorization: Bearer <token>`
