@@ -168,6 +168,185 @@
 
 ---
 
+## Product Catalog 확장 API 최소 세트 (Gate 2 후보 / Phase 1.x)
+
+> 가격/재고 제외. 분류/상품 관리 + WorkOrder 상품 선택/조회 중심.
+
+
+### 1) ProductCategory API (Admin)
+
+
+#### GET /product-categories
+
+- 목적: 분류 목록 조회 (Admin 관리 화면 / WorkOrder 상품선택 필터)
+- 권한: Admin (ORG), 필요 시 TM 조회 허용 가능
+- query (예시):
+  - is_active=true|false
+  - q=검색어
+  - page, page_size
+
+
+#### POST /product-categories
+- 목적: 분류 생성
+- 권한: Admin
+- body (예시): name, code, sort_order
+
+```  JSON
+{
+"name": "공기살균기",
+"code": "STERILIZER",
+"sort_order": 10
+}
+```
+
+#### PATCH /product-categories/{categoryId}
+- 목적: 분류 수정/비활성
+- 권한: Admin
+- body (예시): name, is_active
+
+``` JSON
+{
+"name": "공기살균정화기",
+"is_active": true
+}
+```
+
+#### DELETE /product-categories/{categoryId} (선택)
+- 목적: 삭제 시도 (실제로는 비활성 처리 권장)
+- 권한: Admin
+- 정책:
+   - 하위 활성 상품 존재 시 삭제 거부(409) 권장
+
+
+### 2) Product API (Admin 중심)
+
+#### GET /products
+- 목적: 상품 목록 조회
+- 권한: Admin / (TM 조회 허용 가능)
+- query (예시):
+   - category_id
+   - is_active=true|false
+   - q=검색어
+   - page, page_size
+
+
+#### POST /products
+- 목적: 상품 생성
+- 권한: Admin
+- body (예시): category_id, name, model_name, sku, description, primary_image_file_id
+
+``` JSON 
+{
+"category_id": "cat_001",
+"name": "OH 라디컬 공기살균기 A1",
+"model_name": "A1",
+"sku": "OH-A1",
+"description": "기본형 모델",
+"primary_image_file_id": "file_123"
+}
+```
+
+#### PATCH /products/{productId}
+- 목적: 상품 수정/비활성
+- 권한: Admin
+- body (예시): name, is_active
+
+``` JSON
+{
+"name": "OH 라디컬 공기살균기 A1 (개정)",
+"is_active": true
+}
+```
+
+#### DELETE /products/{productId} (선택)
+- 목적: 삭제 시도
+- 권한: Admin
+- 정책:
+   - WorkOrder 연결 이력 존재 시 삭제 거부(409) 권장
+   - Phase 1.x는 비활성 처리 우선
+
+
+### 3) WorkOrder 상품 선택/조회 API
+
+#### GET /workorders/{workOrderId}/products
+- 목적: 해당 WorkOrder에 연결된 상품 목록 조회
+- 권한:
+   - Admin (ORG)
+   - TM (TEAM scope)
+   - Technician (SELF scope, 본인 배정 건)
+
+- 응답 예시
+
+``` JSON
+{
+"items": [
+{
+"id": "wop_001",
+"product_id": "prod_101",
+"product_name": "OH 라디컬 공기살균기 A1",
+"category_name": "공기살균기",
+"quantity": 1,
+"note": "거실 벽면 설치"
+}
+]
+}
+```
+
+#### PUT /workorders/{workOrderId}/products
+- 목적: WorkOrder 연결 상품 전체 교체 (간단한 MVP 방식)
+- 권한: Admin (Phase 1.x 기본)
+- body 예시
+
+```JSON
+{
+"items": [
+{
+"product_id": "prod_101",
+"quantity": 1,
+"note": "거실 벽면 설치"
+},
+{
+"product_id": "prod_205",
+"quantity": 2,
+"note": "필터 예비분"
+}
+]
+}
+```
+
+- 서버 검증:
+   - 비활성 상품 선택 불가
+   - 중복 product_id 처리 정책 정의 (합치기 또는 400)
+   - WorkOrder 상태별 수정 허용 범위 정책 확인
+
+MVP에선 PUT 전체교체가 구현 단순성 측면에서 유리.
+추후 POST/PATCH/DELETE /workorder-products/{id} 세분화 가능.
+
+
+### 4) 이미지 업로드 연계 (선택)
+
+#### POST /files (기존 파일 업로드 API 재사용)
+- 목적: 상품 대표 이미지 업로드
+- 권한: Admin
+- 결과: FileObject.id 반환 → Product 생성/수정 시 참조
+
+
+### 5) 오류 코드/정책 예시
+
+- 403 FORBIDDEN
+   - RBAC 스코프 위반 (TM/Technician의 상품 수정 시도)
+- 404 NOT_FOUND
+   - 존재하지 않는 category/product/workorder
+- 409 CONFLICT
+   - 분류 삭제 불가(하위 활성 상품 존재)
+   - 상품 삭제 불가(WorkOrder 연결 이력 존재)
+   - 상태 정책상 WorkOrder 상품 수정 불가
+- 422 UNPROCESSABLE_ENTITY
+   - 필수값 누락 / invalid quantity / 비활성 상품 선택 시도
+
+
+---
+
 ## 공통 규칙
 - **Base URL:** `/api/v1`
 - **인증:** `Authorization: Bearer <token>`

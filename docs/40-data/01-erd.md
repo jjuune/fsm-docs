@@ -8,16 +8,16 @@
 ## 🗺️ 1. ERD 논리 모델 (Mermaid)
 ```mermaid
 erDiagram
-    ORGANIZATION ||--o{ TEAM : manages
-    TEAM ||--o{ USER : contains
-    CUSTOMER ||--o{ SITE : owns
-    CUSTOMER ||--o{ WORK_ORDER : requests
-    SITE ||--o{ WORK_ORDER : located_at
-    TEAM ||--o{ WORK_ORDER : assigned_to
-    USER ||--o{ WORK_ORDER : performs
-    WORK_ORDER ||--o{ CHECKLIST_ITEM : has
+    ORGANIZATION ||--o1 TEAM : manages
+    TEAM ||--o1 USER : contains
+    CUSTOMER ||--o1 SITE : owns
+    CUSTOMER ||--o1 WORK_ORDER : requests
+    SITE ||--o1 WORK_ORDER : located_at
+    TEAM ||--o1 WORK_ORDER : assigned_to
+    USER ||--o1 WORK_ORDER : performs
+    WORK_ORDER ||--o1 CHECKLIST_ITEM : has
     WORK_ORDER ||--o1 SIGNATURE : signed_by
-    WORK_ORDER ||--o{ ATTACHMENT : includes
+    WORK_ORDER ||--o1 ATTACHMENT : includes
     ATTACHMENT ||--|| FILE_OBJECT : references
 ```
 
@@ -70,6 +70,69 @@ erDiagram
 2. **M2 (프로세스):** WorkOrder 상태 전이 및 배정 로직 구현
 3. **M3 (증빙):** 체크리스트 자동 생성 및 파일/서명 업로드 연동
 4. **M4 (안정화):** Audit Log 및 발송 결과 트래킹
+
+---
+
+---
+
+## Product Catalog 확장 (Phase 1.x / Gate 2 후보)
+
+> Phase 1 WorkOrder 중심 구조를 유지하면서 상품 카탈로그를 확장하기 위한 데이터 모델 초안.
+> 가격/재고는 범위 제외(Phase 2 검토).
+
+### 7. 추가 엔티티 (권장)
+
+#### 1) ProductCategory
+- `id` (PK)
+- `org_id` (FK) — 멀티 테넌트 고려 시
+- `name` (string, required)
+- `code` (string, optional, org 내 unique 권장)
+- `sort_order` (int, optional)
+- `is_active` (bool, default true)
+- `created_at`, `updated_at`
+- `created_by`, `updated_by` (optional)
+
+#### 2) Product
+- `id` (PK)
+- `org_id` (FK)
+- `category_id` (FK -> ProductCategory.id)
+- `name` (string, required)
+- `model_name` (string, optional)
+- `sku` (string, optional)
+- `description` (text, optional)
+- `primary_image_file_id` (FK -> FileObject.id, optional)
+- `is_active` (bool, default true)
+- `created_at`, `updated_at`
+- `created_by`, `updated_by` (optional)
+
+#### 3) WorkOrderProduct
+- `id` (PK)
+- `work_order_id` (FK -> WorkOrder.id)
+- `product_id` (FK -> Product.id)
+- `quantity` (int, default 1)
+- `note` (string/text, optional)
+- `sort_order` (int, optional)
+- `created_at`, `created_by` (optional)
+
+> Phase 1.x에서는 가격/금액 필드 미포함.
+> 향후 필요 시 `unit_price`, `currency`, `price_snapshot` 등을 확장.
+
+---
+
+### 관계 요약
+
+- `ProductCategory 1:N Product`
+- `WorkOrder 1:N WorkOrderProduct`
+- `Product 1:N WorkOrderProduct`
+- `Product.primary_image_file_id -> FileObject` (선택)
+
+---
+
+### 정책 메모
+
+- ProductCategory / Product는 hard delete 대신 `is_active=false` 권장
+- 비활성 Product는 신규 WorkOrder 선택 목록에서 제외
+- 기존 WorkOrder에 연결된 Product는 상세 조회에서 유지 표시
 
 ---
 
