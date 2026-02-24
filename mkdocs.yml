@@ -12,6 +12,7 @@ nav:
   - WorkOrder FSM: 10-domain/01-workorder-fsm.md
   - 체크리스트/완료 정책: 10-domain/02-checklist-policy.md
   - Org/Team 프로필: 10-domain/05-org-team-profile.md
+  - 상품 카탈로그 정책 (Gate 2 후보): 10-domain/05-product-catalog-policy.md
 - 20 Product:
   - 권한 매트릭스(RBAC Matrix): 20-product/00-rbac.md
   - 로그인/홈(랜딩): 20-product/00-auth-and-home.md
@@ -36,3 +37,4 @@ nav:
   - 용어집: 90-appendix/01-glossary.md
   - 변경 이력: 90-appendix/02-changelog.md
   - 용어/문구 세트: 90-appendix/03-copy.md
+  - 이슈 라벨 가이드: 90-appendix/04-labels.md
