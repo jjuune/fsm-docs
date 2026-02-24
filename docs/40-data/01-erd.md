@@ -8,16 +8,16 @@
 ## 🗺️ 1. ERD 논리 모델 (Mermaid)
 ```mermaid
 erDiagram
-    ORGANIZATION ||--o1 TEAM : manages
-    TEAM ||--o1 USER : contains
-    CUSTOMER ||--o1 SITE : owns
-    CUSTOMER ||--o1 WORK_ORDER : requests
-    SITE ||--o1 WORK_ORDER : located_at
-    TEAM ||--o1 WORK_ORDER : assigned_to
-    USER ||--o1 WORK_ORDER : performs
-    WORK_ORDER ||--o1 CHECKLIST_ITEM : has
-    WORK_ORDER ||--o1 SIGNATURE : signed_by
-    WORK_ORDER ||--o1 ATTACHMENT : includes
+    ORGANIZATION ||--o| TEAM : manages
+    TEAM ||--o| USER : contains
+    CUSTOMER ||--o| SITE : owns
+    CUSTOMER ||--o| WORK_ORDER : requests
+    SITE ||--o| WORK_ORDER : located_at
+    TEAM ||--o| WORK_ORDER : assigned_to
+    USER ||--o| WORK_ORDER : performs
+    WORK_ORDER ||--o| CHECKLIST_ITEM : has
+    WORK_ORDER ||--o| SIGNATURE : signed_by
+    WORK_ORDER ||--o| ATTACHMENT : includes
     ATTACHMENT ||--|| FILE_OBJECT : references
 ```
 
@@ -28,7 +28,7 @@ erDiagram
 ### 2.1 조직 및 사용자
 | 테이블 | 설명 | 핵심 필드 |
 | :--- | :--- | :--- |
-| **ORGANIZATION** | 웈사(본사) 프로필 1개 | `legal_name`, `biz_reg_no`, `address`, `phone`, `email`, `created_at`, `updated_at` |
+| **ORGANIZATION** | 회사(본사) 프로필 (단일 조직 기준 1개) | `legal_name`, `biz_reg_no`, `address`, `phone`, `email`, `created_at`, `updated_at` |
 | **TEAM** | 본사 소속 팀/센터 | `id`, `name`(**Immutable**), `address`, `contact_phone`, `status(ACTIVE/INACTIVE)`, `deactivated_at`, `deactivated_reason`, `org_id` |
 | **USER** | 시스템 사용자 | `email`, `role(ADMIN/TM/TECH)`, `team_id`, `status(ACTIVE/INACTIVE)`, `deactivated_at` |
 
@@ -54,7 +54,7 @@ erDiagram
 
 ---
 
-## ⚠️ 5. Team / User Lifecycle 정책 (Phase 1)
+## ⚠️ 4. Team / User Lifecycle 정책 (Phase 1)
 
 | 엔티티 | 허용 조작 | 금지 조작 | 비고 |
 | :--- | :--- | :--- | :--- |
@@ -65,7 +65,7 @@ erDiagram
 
 ---
 
-## 📅 6. 구현 마일스톤 (데이터 중심)
+## 📅 5. 구현 마일스톤 (데이터 중심)
 1. **M1 (코어):** 인증 및 기초 마스터(Organization, Team, User, Customer, Site) 구축
 2. **M2 (프로세스):** WorkOrder 상태 전이 및 배정 로직 구현
 3. **M3 (증빙):** 체크리스트 자동 생성 및 파일/서명 업로드 연동
