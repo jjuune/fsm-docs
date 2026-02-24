@@ -1,0 +1,2319 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="../01-project/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Phase 1 SSoT - Phase1 문서(v0.2)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#phase-1-ssot" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Phase1 문서(v0.2)" class="md-header__button md-logo" aria-label="Phase1 문서(v0.2)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Phase1 문서(v0.2)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Phase 1 SSoT
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Phase1 문서(v0.2)" class="md-nav__button md-logo" aria-label="Phase1 문서(v0.2)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Phase1 문서(v0.2)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Overview
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00 Overview
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 1 SSoT
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 1 SSoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TL;DR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 1. 목표 / 비목표
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 1. 목표 / 비목표">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        목표 (Phase 1 = 내부 효율 개선 A)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        비목표 (Phase 2 이후)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧑‍🤝‍🧑 2. 조직 / 역할 흐름
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 3. 배정 체인 / 상태 모델
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 3. 배정 체인 / 상태 모델">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WorkOrder 상태 전이
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 4. 완료 제출 검증 규칙
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 5. Phase 1 화면 구성
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💻 5. Phase 1 화면 구성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심 화면
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        관리 화면 (Phase 1 추가)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        로그인/홈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-phase-1-core-erd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗄️ 6. Phase 1 Core 데이터 (ERD 요약)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🗄️ 6. Phase 1 Core 데이터 (ERD 요약)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심 엔티티
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 7. 토글 기본값
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-dod-definition-of-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 8. DoD (Definition of Done) — 필드테스트 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연관 문서
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        변경 이력
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트 정의
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    역할과 책임(RBAC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    범위(In/Out)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-assumptions-risks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    가정/리스크
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 Domain
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10 Domain
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-domain/01-workorder-fsm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WorkOrder FSM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-domain/02-checklist-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    체크리스트/완료 정책
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-domain/05-org-team-profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Org/Team 프로필
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-domain/05-product-catalog-policy.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    상품 카탈로그 정책 (Gate 2 후보)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 Product
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    20 Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/00-rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    권한 매트릭스(RBAC Matrix)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/00-auth-and-home/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    로그인/홈(랜딩)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/01-screen-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    화면 지도
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/02-admin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Admin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/11-a00-admin-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A-00 Admin 대시보드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/10-a01-team-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A-01 팀 관리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/03-team-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Team Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/21-t00-team-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T-00 팀 대시보드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/20-t04-technician-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T-04 기사 관리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/04-technician/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technician
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/05-m01-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M-01 기사 작업 목록
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 Implementation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    30 Implementation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../30-implementation/01-m02-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M-02 통합 스펙
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../30-implementation/02-m02-components-risk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M-02 컴포넌트/리스크
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../30-implementation/03-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API(WorkOrder)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../30-implementation/04-crud-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRUD 매트릭스
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../30-implementation/10-api-minimum-set-phase1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 최소세트(Phase 1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 Data
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    40 Data
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../40-data/01-erd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERD + Field Dictionary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    90 Appendix
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    90 Appendix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../90-appendix/01-glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어집
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../90-appendix/02-changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    변경 이력
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../90-appendix/03-copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어/문구 세트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../90-appendix/04-labels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    이슈 라벨 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TL;DR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 1. 목표 / 비목표
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 1. 목표 / 비목표">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        목표 (Phase 1 = 내부 효율 개선 A)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        비목표 (Phase 2 이후)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧑‍🤝‍🧑 2. 조직 / 역할 흐름
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 3. 배정 체인 / 상태 모델
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 3. 배정 체인 / 상태 모델">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WorkOrder 상태 전이
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 4. 완료 제출 검증 규칙
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 5. Phase 1 화면 구성
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💻 5. Phase 1 화면 구성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심 화면
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        관리 화면 (Phase 1 추가)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        로그인/홈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-phase-1-core-erd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗄️ 6. Phase 1 Core 데이터 (ERD 요약)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🗄️ 6. Phase 1 Core 데이터 (ERD 요약)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심 엔티티
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 7. 토글 기본값
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-dod-definition-of-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 8. DoD (Definition of Done) — 필드테스트 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연관 문서
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        변경 이력
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="phase-1-ssot">Phase 1 기능 명세서 (SSoT)</h1>
+<h2 id="tldr">TL;DR</h2>
+<ul>
+<li><strong>여기만 읽으면 Phase 1 전체가 보입니다.</strong></li>
+<li>목표: Admin → TM → Tech 배정 체인 운영 + 현장 수행/증빙 + WorkOrder 표준화</li>
+<li>비목표: 재고 정밀 추적, 정산, 고급 리포트, AuditLog (→ Phase 2)</li>
+</ul>
+<hr />
+<h2 id="1">🎯 1. 목표 / 비목표</h2>
+<h3 id="phase-1-a">목표 (Phase 1 = 내부 효율 개선 A)</h3>
+<ul>
+<li>WorkOrder 기반 설치·AS 업무 프로세스 <strong>표준화</strong></li>
+<li>현장 증빙(체크리스트·서명·사진) <strong>디지털화</strong></li>
+<li>Admin → TM → Tech <strong>3단 배정 체인</strong> 확립</li>
+<li>팀/기사 관리 <strong>기본 CRUD(CRUD-lite)</strong> 제공</li>
+</ul>
+<h3 id="phase-2">비목표 (Phase 2 이후)</h3>
+<ul>
+<li>Hard delete (Team/User 모두 비활성화만)</li>
+<li>고급 성과 리포트 / KPI 대시보드</li>
+<li>PDF 사업자정보 자동삽입 (서식 자동화 고도화)</li>
+<li>AuditLog 전체 노출</li>
+<li>재고/시리얼 정밀 추적, 정산/결제</li>
+</ul>
+<hr />
+<ul>
+<li>확장 메모: WorkOrder 설치상품 선택을 위해 상품 카탈로그(분류/상품) 기능을 Gate 2 후보로 관리한다. 가격/재고는 Phase 2 이후 범위로 둔다.</li>
+</ul>
+<hr />
+<h2 id="2">🧑‍🤝‍🧑 2. 조직 / 역할 흐름</h2>
+<pre><code>[Admin (본사)]
+    │  팀 생성·관리 / WorkOrder 생성·팀 배정 / 전체 조회
+    ▼
+[Team Manager (TM, 팀장)]
+    │  기사 생성·비활성화 / WorkOrder 기사 배정 / 팀 내 조회
+    ▼
+[Technician (Tech, 기사)]
+       WorkOrder 수행 / 체크리스트·서명·사진 입력 / 완료 제출
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">역할</th>
+<th style="text-align: center;">코드</th>
+<th style="text-align: center;">스코프</th>
+<th style="text-align: left;">핵심 권한</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">본사 관리자</td>
+<td style="text-align: center;">ADMIN</td>
+<td style="text-align: center;">ORG</td>
+<td style="text-align: left;">팀·WO 전체 관리, 통계</td>
+</tr>
+<tr>
+<td style="text-align: left;">팀 관리자</td>
+<td style="text-align: center;">TM</td>
+<td style="text-align: center;">TEAM</td>
+<td style="text-align: left;">기사 관리, 팀 내 WO 배정</td>
+</tr>
+<tr>
+<td style="text-align: left;">기사</td>
+<td style="text-align: center;">TECH</td>
+<td style="text-align: center;">SELF</td>
+<td style="text-align: left;">본인 WO 수행·증빙</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3">🔗 3. 배정 체인 / 상태 모델</h2>
+<h3 id="workorder">WorkOrder 상태 전이</h3>
+<pre><code>DRAFT
+  └─(Admin 팀배정)─▶ TEAM_ASSIGNED
+                         └─(TM 기사배정)─▶ TECH_ASSIGNED
+                                               └─(Tech 시작)─▶ IN_PROGRESS
+                                                                   └─(완료 제출)─▶ COMPLETED
+(Admin 취소 가능: DRAFT ~ TECH_ASSIGNED)─▶ CANCELLED
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">상태</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>DRAFT</code></td>
+<td style="text-align: left;">생성됨, 팀 미배정</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>TEAM_ASSIGNED</code></td>
+<td style="text-align: left;">팀 배정 완료, 기사 미배정</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>TECH_ASSIGNED</code></td>
+<td style="text-align: left;">기사 배정 완료, 현장 이동 전</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>IN_PROGRESS</code></td>
+<td style="text-align: left;">기사 현장 수행 중</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>COMPLETED</code></td>
+<td style="text-align: left;">완료 제출·검증 통과</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>CANCELLED</code></td>
+<td style="text-align: left;">취소 (사유 필수)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4">✅ 4. 완료 제출 검증 규칙</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">조건</th>
+<th style="text-align: center;">필수 여부</th>
+<th style="text-align: left;">비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">모든 필수 체크리스트 항목 응답</td>
+<td style="text-align: center;">✅ 필수</td>
+<td style="text-align: left;">PASS / FAIL / NA 중 선택</td>
+</tr>
+<tr>
+<td style="text-align: left;">FAIL 항목의 메모 입력</td>
+<td style="text-align: center;">✅ 필수</td>
+<td style="text-align: left;">FAIL 선택 시 자동 강제</td>
+</tr>
+<tr>
+<td style="text-align: left;">고객 서명(서명자 성명 포함)</td>
+<td style="text-align: center;">✅ 필수</td>
+<td style="text-align: left;">미입력 시 제출 버튼 비활성</td>
+</tr>
+<tr>
+<td style="text-align: left;">사진(전/후) 업로드</td>
+<td style="text-align: center;">⚠️ 토글</td>
+<td style="text-align: left;">기본값 OFF (비필수)</td>
+</tr>
+<tr>
+<td style="text-align: left;">조직/팀 기본정보</td>
+<td style="text-align: center;">❌ 해당없음</td>
+<td style="text-align: left;"><strong>완료 제출 요건 아님 (Phase 1)</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>서버는 COMPLETED 전환 시 위 조건을 재검증합니다 (클라이언트 우회 방지).</p>
+</blockquote>
+<hr />
+<h2 id="5-phase-1">💻 5. Phase 1 화면 구성</h2>
+<h3 id="_1">핵심 화면</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">화면 ID</th>
+<th style="text-align: left;">이름</th>
+<th style="text-align: left;">역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">M-01</td>
+<td style="text-align: left;">기사 작업 목록</td>
+<td style="text-align: left;">Tech</td>
+</tr>
+<tr>
+<td style="text-align: center;">M-02</td>
+<td style="text-align: left;">기사 작업 상세 (수행·증빙)</td>
+<td style="text-align: left;">Tech</td>
+</tr>
+<tr>
+<td style="text-align: center;">T-01</td>
+<td style="text-align: left;">팀 대시보드</td>
+<td style="text-align: left;">TM</td>
+</tr>
+<tr>
+<td style="text-align: center;">T-02</td>
+<td style="text-align: left;">팀 작업함 (목록)</td>
+<td style="text-align: left;">TM</td>
+</tr>
+<tr>
+<td style="text-align: center;">T-03</td>
+<td style="text-align: left;">팀 작업 상세 (배정·관리)</td>
+<td style="text-align: left;">TM</td>
+</tr>
+<tr>
+<td style="text-align: center;">A-02</td>
+<td style="text-align: left;">본사 작업 목록</td>
+<td style="text-align: left;">Admin</td>
+</tr>
+<tr>
+<td style="text-align: center;">A-04</td>
+<td style="text-align: left;">본사 작업 상세</td>
+<td style="text-align: left;">Admin</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-1">관리 화면 (Phase 1 추가)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">화면 ID</th>
+<th style="text-align: left;">이름</th>
+<th style="text-align: left;">역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">A-00</td>
+<td style="text-align: left;">Admin 대시보드 (팀별 운영지표 MVP)</td>
+<td style="text-align: left;">Admin</td>
+</tr>
+<tr>
+<td style="text-align: center;">A-01</td>
+<td style="text-align: left;">팀 관리 (생성·수정·비활성화)</td>
+<td style="text-align: left;">Admin</td>
+</tr>
+<tr>
+<td style="text-align: center;">T-00</td>
+<td style="text-align: left;">팀 대시보드 (기사별 운영지표 MVP)</td>
+<td style="text-align: left;">TM</td>
+</tr>
+<tr>
+<td style="text-align: center;">T-04</td>
+<td style="text-align: left;">기사 관리 (초대·수정·비활성화)</td>
+<td style="text-align: left;">TM</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2">로그인/홈</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">화면 ID</th>
+<th style="text-align: left;">이름</th>
+<th style="text-align: left;">역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">L-01</td>
+<td style="text-align: left;">로그인</td>
+<td style="text-align: left;">All</td>
+</tr>
+<tr>
+<td style="text-align: center;">H-01</td>
+<td style="text-align: left;">My Home (역할별 랜딩 라우팅)</td>
+<td style="text-align: left;">All</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-phase-1-core-erd">🗄️ 6. Phase 1 Core 데이터 (ERD 요약)</h2>
+<h3 id="_3">핵심 엔티티</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">엔티티</th>
+<th style="text-align: left;">핵심 필드</th>
+<th style="text-align: left;">비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>ORGANIZATION</strong></td>
+<td style="text-align: left;"><code>legal_name</code>, <code>biz_reg_no</code>, <code>address</code></td>
+<td style="text-align: left;">OrgProfile (1개)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TEAM</strong></td>
+<td style="text-align: left;"><code>name</code>(immutable), <code>status(ACTIVE/INACTIVE)</code></td>
+<td style="text-align: left;">센터</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>USER</strong></td>
+<td style="text-align: left;"><code>email</code>, <code>role</code>, <code>team_id</code>, <code>status</code></td>
+<td style="text-align: left;">비활성화만 (삭제 금지)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>WORK_ORDER</strong></td>
+<td style="text-align: left;"><code>type</code>, <code>status</code>, <code>assigned_team_id</code>, <code>assigned_technician_id</code></td>
+<td style="text-align: left;">핵심</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CHECKLIST_ITEM</strong></td>
+<td style="text-align: left;"><code>label</code>, <code>value(PASS/FAIL/NA)</code>, <code>note</code></td>
+<td style="text-align: left;">WO당 10~12개 자동 생성</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SIGNATURE</strong></td>
+<td style="text-align: left;"><code>signed_by_name</code>, <code>file_id</code>, <code>signed_at</code></td>
+<td style="text-align: left;">필수</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FILE_OBJECT</strong></td>
+<td style="text-align: left;"><code>storage_key</code>, <code>type(PHOTO/SIGN/PDF)</code></td>
+<td style="text-align: left;">S3</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>OrgProfile:</strong> 단일 레코드. Admin만 편집 가능.
+<strong>Team/User:</strong> Phase 1은 INACTIVE(비활성화)만. Hard delete 금지.</p>
+</blockquote>
+<hr />
+<h2 id="7">⚙️ 7. 토글 기본값</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">항목</th>
+<th style="text-align: center;">기본값</th>
+<th style="text-align: left;">변경 주체</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">사진 업로드 필수 여부</td>
+<td style="text-align: center;"><strong>OFF</strong> (비필수)</td>
+<td style="text-align: left;">Admin 설정</td>
+</tr>
+<tr>
+<td style="text-align: left;">완료 후 증빙 수정</td>
+<td style="text-align: center;"><strong>금지</strong></td>
+<td style="text-align: left;">시스템 고정</td>
+</tr>
+<tr>
+<td style="text-align: left;">Team.name 변경</td>
+<td style="text-align: center;"><strong>불가</strong> (immutable)</td>
+<td style="text-align: left;">시스템 고정</td>
+</tr>
+<tr>
+<td style="text-align: left;">User/Team 삭제</td>
+<td style="text-align: center;"><strong>금지</strong></td>
+<td style="text-align: left;">시스템 고정</td>
+</tr>
+<tr>
+<td style="text-align: left;">TM의 TECH 생성</td>
+<td style="text-align: center;"><strong>허용</strong> (팀 스코프)</td>
+<td style="text-align: left;">RBAC 정책</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-dod-definition-of-done">📋 8. DoD (Definition of Done) — 필드테스트 체크리스트</h2>
+<ul>
+<li>[ ] 기사가 M-02에서 체크리스트·서명 제출까지 문제없이 완료했는가?</li>
+<li>[ ] TM이 T-02에서 기사 배정(퀵 배정)을 즉시 수행할 수 있는가?</li>
+<li>[ ] Admin이 A-02에서 전체 작업 흐름을 실시간으로 확인 가능한가?</li>
+<li>[ ] 완료 후 PDF 문서가 조회 가능한 형태로 생성되는가?</li>
+<li>[ ] Admin이 A-01에서 팀을 생성하고 비활성화할 수 있는가?</li>
+<li>[ ] TM이 T-04에서 기사를 초대하고 비활성화할 수 있는가?</li>
+<li>[ ] H-01에서 역할에 따라 올바른 랜딩 화면으로 자동 이동되는가?</li>
+<li>[ ] inactive 팀/유저는 로그인 및 배정에서 차단되었는가?</li>
+</ul>
+<hr />
+<h2 id="_4">연관 문서</h2>
+<ul>
+<li><a href="../03-scope/">범위 정의 (In/Out)</a></li>
+<li><a href="../02-roles/">역할과 책임 (RBAC)</a></li>
+<li><a href="../../20-product/00-rbac/">권한 매트릭스</a></li>
+<li><a href="../../10-domain/01-workorder-fsm/">WorkOrder FSM</a></li>
+<li><a href="../../40-data/01-erd/">ERD + Field Dictionary</a></li>
+</ul>
+<h2 id="_5">변경 이력</h2>
+<ul>
+<li><strong>v0.2:</strong> Phase 1 SSoT 신규 작성 — 목표·역할·상태·화면·데이터·토글·DoD 통합 (2026-02-23)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

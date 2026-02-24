@@ -1,0 +1,2845 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../04-crud-matrix/">
+      
+      
+        <link rel="next" href="../../40-data/01-erd/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>API 최소세트(Phase 1) - Phase1 문서(v0.2)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-phase-1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Phase1 문서(v0.2)" class="md-header__button md-logo" aria-label="Phase1 문서(v0.2)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Phase1 문서(v0.2)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API 최소세트(Phase 1)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Phase1 문서(v0.2)" class="md-nav__button md-logo" aria-label="Phase1 문서(v0.2)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Phase1 문서(v0.2)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Overview
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00 Overview
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-overview/00-phase1-functional-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 1 SSoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-overview/01-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트 정의
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-overview/02-roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    역할과 책임(RBAC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-overview/03-scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    범위(In/Out)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-overview/04-assumptions-risks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    가정/리스크
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 Domain
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10 Domain
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-domain/01-workorder-fsm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WorkOrder FSM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-domain/02-checklist-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    체크리스트/완료 정책
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-domain/05-org-team-profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Org/Team 프로필
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-domain/05-product-catalog-policy.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    상품 카탈로그 정책 (Gate 2 후보)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 Product
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    20 Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/00-rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    권한 매트릭스(RBAC Matrix)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/00-auth-and-home/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    로그인/홈(랜딩)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/01-screen-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    화면 지도
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/02-admin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Admin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/11-a00-admin-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A-00 Admin 대시보드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/10-a01-team-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A-01 팀 관리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/03-team-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Team Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/21-t00-team-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T-00 팀 대시보드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/20-t04-technician-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T-04 기사 관리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/04-technician/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technician
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20-product/05-m01-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M-01 기사 작업 목록
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 Implementation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    30 Implementation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-m02-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M-02 통합 스펙
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-m02-components-risk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M-02 컴포넌트/리스크
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API(WorkOrder)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-crud-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRUD 매트릭스
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 최소세트(Phase 1)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 최소세트(Phase 1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TL;DR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 1. Auth
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-admin-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏢 2. Admin — 팀 관리 API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tm-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        👷 3. TM — 기사 관리 API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ 4. 가드 규칙
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛡️ 4. 가드 규칙">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 스코프 강제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-inactive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Inactive 처리 정책
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-teamname-immutable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Team.name Immutable 강제
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 5. 권한 가드 예시 (필수, Phase 1)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 5. 권한 가드 예시 (필수, Phase 1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 원칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-1-technician-self" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 예시 1) Technician 내 작업 목록: SELF 강제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-2-team-manager-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 예시 2) Team Manager 기사 목록/관리: TEAM 강제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-3-team-manager-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 예시 3) Team Manager 팀 작업함: TEAM 강제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-4-admin-org" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 예시 4) Admin 팀 관리/통계: ORG 강제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 예시 5) 비활성 계정/팀 처리 (권장)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-catalog-api-gate-2-phase-1x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Catalog 확장 API 최소 세트 (Gate 2 후보 / Phase 1.x)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Product Catalog 확장 API 최소 세트 (Gate 2 후보 / Phase 1.x)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-productcategory-api-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) ProductCategory API (Admin)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) ProductCategory API (Admin)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-product-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /product-categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-product-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /product-categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch-product-categoriescategoryid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATCH /product-categories/{categoryId}
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-product-categoriescategoryid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /product-categories/{categoryId} (선택)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-product-api-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Product API (Admin 중심)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2) Product API (Admin 중심)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /products
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /products
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch-productsproductid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATCH /products/{productId}
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-productsproductid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /products/{productId} (선택)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-workorder-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) WorkOrder 상품 선택/조회 API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3) WorkOrder 상품 선택/조회 API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-workordersworkorderidproducts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /workorders/{workOrderId}/products
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-workordersworkorderidproducts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUT /workorders/{workOrderId}/products
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) 이미지 업로드 연계 (선택)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) 이미지 업로드 연계 (선택)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-files-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /files (기존 파일 업로드 API 재사용)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) 오류 코드/정책 예시
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 규칙
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연관 문서
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        변경 이력
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 Data
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    40 Data
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../40-data/01-erd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERD + Field Dictionary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    90 Appendix
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    90 Appendix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../90-appendix/01-glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어집
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../90-appendix/02-changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    변경 이력
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../90-appendix/03-copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어/문구 세트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../90-appendix/04-labels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    이슈 라벨 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TL;DR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 1. Auth
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-admin-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏢 2. Admin — 팀 관리 API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tm-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        👷 3. TM — 기사 관리 API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ 4. 가드 규칙
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛡️ 4. 가드 규칙">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 스코프 강제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-inactive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Inactive 처리 정책
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-teamname-immutable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Team.name Immutable 강제
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 5. 권한 가드 예시 (필수, Phase 1)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 5. 권한 가드 예시 (필수, Phase 1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 원칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-1-technician-self" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 예시 1) Technician 내 작업 목록: SELF 강제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-2-team-manager-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 예시 2) Team Manager 기사 목록/관리: TEAM 강제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-3-team-manager-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 예시 3) Team Manager 팀 작업함: TEAM 강제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-4-admin-org" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 예시 4) Admin 팀 관리/통계: ORG 강제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 예시 5) 비활성 계정/팀 처리 (권장)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-catalog-api-gate-2-phase-1x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Catalog 확장 API 최소 세트 (Gate 2 후보 / Phase 1.x)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Product Catalog 확장 API 최소 세트 (Gate 2 후보 / Phase 1.x)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-productcategory-api-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) ProductCategory API (Admin)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) ProductCategory API (Admin)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-product-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /product-categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-product-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /product-categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch-product-categoriescategoryid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATCH /product-categories/{categoryId}
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-product-categoriescategoryid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /product-categories/{categoryId} (선택)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-product-api-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Product API (Admin 중심)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2) Product API (Admin 중심)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /products
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /products
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch-productsproductid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATCH /products/{productId}
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-productsproductid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /products/{productId} (선택)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-workorder-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) WorkOrder 상품 선택/조회 API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3) WorkOrder 상품 선택/조회 API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-workordersworkorderidproducts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /workorders/{workOrderId}/products
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-workordersworkorderidproducts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUT /workorders/{workOrderId}/products
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) 이미지 업로드 연계 (선택)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) 이미지 업로드 연계 (선택)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-files-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /files (기존 파일 업로드 API 재사용)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) 오류 코드/정책 예시
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 규칙
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연관 문서
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        변경 이력
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="api-phase-1">API 최소세트 (Phase 1)</h1>
+<h2 id="tldr">TL;DR</h2>
+<ul>
+<li><strong>추가/확장:</strong> Auth, Admin(Team), TM(Technician) 관리 API 최소 세트</li>
+<li><strong>기존 WorkOrder API는 <a href="../03-api/">API 명세서</a> 유지</strong></li>
+<li><strong>가드 규칙:</strong> ORG/TEAM/SELF 스코프 강제, Inactive 처리 정책</li>
+</ul>
+<hr />
+<h2 id="1-auth">🔐 1. Auth</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">기능</th>
+<th style="text-align: center;">Method</th>
+<th style="text-align: left;">Endpoint</th>
+<th style="text-align: center;">Role</th>
+<th style="text-align: left;">비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">로그인</td>
+<td style="text-align: center;"><code>POST</code></td>
+<td style="text-align: left;"><code>/auth/login</code></td>
+<td style="text-align: center;">ALL</td>
+<td style="text-align: left;">Inactive 계정 → 401 반환</td>
+</tr>
+<tr>
+<td style="text-align: left;">내 정보 조회</td>
+<td style="text-align: center;"><code>GET</code></td>
+<td style="text-align: left;"><code>/me</code></td>
+<td style="text-align: center;">ALL (SELF)</td>
+<td style="text-align: left;">role/team_id/status 반환</td>
+</tr>
+</tbody>
+</table>
+<p><strong>POST /auth/login 요청:</strong></p>
+<pre><code class="language-json">{
+  &quot;email&quot;: &quot;user@example.com&quot;,
+  &quot;password&quot;: &quot;...&quot;
+}
+</code></pre>
+<p><strong>GET /me 응답:</strong></p>
+<pre><code class="language-json">{
+  &quot;ok&quot;: true,
+  &quot;data&quot;: {
+    &quot;id&quot;: &quot;uuid&quot;,
+    &quot;email&quot;: &quot;user@example.com&quot;,
+    &quot;name&quot;: &quot;홍길동&quot;,
+    &quot;role&quot;: &quot;TM&quot;,
+    &quot;team_id&quot;: &quot;uuid&quot;,
+    &quot;team_name&quot;: &quot;서울 북부 센터&quot;,
+    &quot;status&quot;: &quot;ACTIVE&quot;
+  }
+}
+</code></pre>
+<hr />
+<h2 id="2-admin-api">🏢 2. Admin — 팀 관리 API</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">기능</th>
+<th style="text-align: center;">Method</th>
+<th style="text-align: left;">Endpoint</th>
+<th style="text-align: center;">Scope</th>
+<th style="text-align: left;">비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">팀 목록</td>
+<td style="text-align: center;"><code>GET</code></td>
+<td style="text-align: left;"><code>/admin/teams</code></td>
+<td style="text-align: center;">ORG</td>
+<td style="text-align: left;">상태 필터 지원</td>
+</tr>
+<tr>
+<td style="text-align: left;">팀 생성</td>
+<td style="text-align: center;"><code>POST</code></td>
+<td style="text-align: left;"><code>/admin/teams</code></td>
+<td style="text-align: center;">ORG</td>
+<td style="text-align: left;"><code>name</code> immutable</td>
+</tr>
+<tr>
+<td style="text-align: left;">팀 수정</td>
+<td style="text-align: center;"><code>PATCH</code></td>
+<td style="text-align: left;"><code>/admin/teams/{id}</code></td>
+<td style="text-align: center;">ORG</td>
+<td style="text-align: left;"><strong><code>name</code> 필드 무시</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">팀 비활성화</td>
+<td style="text-align: center;"><code>PATCH</code></td>
+<td style="text-align: left;"><code>/admin/teams/{id}/deactivate</code></td>
+<td style="text-align: center;">ORG</td>
+<td style="text-align: left;">삭제 금지</td>
+</tr>
+<tr>
+<td style="text-align: left;">팀 운영지표</td>
+<td style="text-align: center;"><code>GET</code></td>
+<td style="text-align: left;"><code>/admin/teams/{id}/stats</code></td>
+<td style="text-align: center;">ORG</td>
+<td style="text-align: left;">상태별 WO 카운트</td>
+</tr>
+<tr>
+<td style="text-align: left;">전체 팀 요약</td>
+<td style="text-align: center;"><code>GET</code></td>
+<td style="text-align: left;"><code>/admin/stats/teams</code></td>
+<td style="text-align: center;">ORG</td>
+<td style="text-align: left;">A-00 대시보드용</td>
+</tr>
+</tbody>
+</table>
+<p><strong>POST /admin/teams 요청:</strong></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;서울 북부 센터&quot;,
+  &quot;address&quot;: &quot;서울시 ...&quot;,
+  &quot;contact_phone&quot;: &quot;02-...&quot;,
+  &quot;manager_name&quot;: &quot;김관리&quot;
+}
+</code></pre>
+<p><strong>PATCH /admin/teams/{id}/deactivate 요청:</strong></p>
+<pre><code class="language-json">{
+  &quot;reason&quot;: &quot;센터 통합으로 인한 운영 종료&quot;
+}
+</code></pre>
+<hr />
+<h2 id="3-tm-api">👷 3. TM — 기사 관리 API</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">기능</th>
+<th style="text-align: center;">Method</th>
+<th style="text-align: left;">Endpoint</th>
+<th style="text-align: center;">Scope</th>
+<th style="text-align: left;">비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">기사 목록</td>
+<td style="text-align: center;"><code>GET</code></td>
+<td style="text-align: left;"><code>/team/technicians</code></td>
+<td style="text-align: center;">TEAM</td>
+<td style="text-align: left;">내 팀 기사만</td>
+</tr>
+<tr>
+<td style="text-align: left;">기사 초대(생성)</td>
+<td style="text-align: center;"><code>POST</code></td>
+<td style="text-align: left;"><code>/team/technicians</code></td>
+<td style="text-align: center;">TEAM</td>
+<td style="text-align: left;">role=TECH 고정</td>
+</tr>
+<tr>
+<td style="text-align: left;">기사 정보 수정</td>
+<td style="text-align: center;"><code>PATCH</code></td>
+<td style="text-align: left;"><code>/team/technicians/{id}</code></td>
+<td style="text-align: center;">TEAM</td>
+<td style="text-align: left;">연락처/표시명</td>
+</tr>
+<tr>
+<td style="text-align: left;">기사 비활성화</td>
+<td style="text-align: center;"><code>PATCH</code></td>
+<td style="text-align: left;"><code>/team/technicians/{id}/deactivate</code></td>
+<td style="text-align: center;">TEAM</td>
+<td style="text-align: left;">삭제 금지</td>
+</tr>
+<tr>
+<td style="text-align: left;">기사별 운영지표</td>
+<td style="text-align: center;"><code>GET</code></td>
+<td style="text-align: left;"><code>/team/stats/technicians</code></td>
+<td style="text-align: center;">TEAM</td>
+<td style="text-align: left;">T-00 대시보드용</td>
+</tr>
+</tbody>
+</table>
+<p><strong>POST /team/technicians 요청:</strong></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;박기사&quot;,
+  &quot;phone&quot;: &quot;010-...&quot;,
+  &quot;email&quot;: &quot;tech@example.com&quot;,
+  &quot;temporary_password&quot;: &quot;...&quot;
+}
+</code></pre>
+<p><strong>PATCH /team/technicians/{id}/deactivate 요청:</strong></p>
+<pre><code class="language-json">{
+  &quot;reason&quot;: &quot;퇴사&quot;
+}
+</code></pre>
+<hr />
+<h2 id="4">🛡️ 4. 가드 규칙</h2>
+<h3 id="41">4.1 스코프 강제</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">역할</th>
+<th style="text-align: left;">허용 범위</th>
+<th style="text-align: left;">위반 시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">ADMIN</td>
+<td style="text-align: left;">ORG (전체)</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;">TM</td>
+<td style="text-align: left;">TEAM (자기 팀만)</td>
+<td style="text-align: left;">403 Forbidden</td>
+</tr>
+<tr>
+<td style="text-align: center;">TECH</td>
+<td style="text-align: left;">SELF (본인 작업만)</td>
+<td style="text-align: left;">403 Forbidden</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>TM이 다른 팀의 기사에 <code>PATCH /team/technicians/{id}</code> 요청 시 403 반환.</p>
+</blockquote>
+<h3 id="42-inactive">4.2 Inactive 처리 정책</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">대상</th>
+<th style="text-align: left;">처리</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Inactive 유저 로그인</td>
+<td style="text-align: left;">401 반환 ("비활성화된 계정")</td>
+</tr>
+<tr>
+<td style="text-align: left;">Inactive 팀에 WO 신규 배정</td>
+<td style="text-align: left;">400 반환 ("비활성화된 팀")</td>
+</tr>
+<tr>
+<td style="text-align: left;">Inactive 기사에 WO 신규 배정</td>
+<td style="text-align: left;">400 반환 ("비활성화된 기사")</td>
+</tr>
+<tr>
+<td style="text-align: left;">Inactive 기사의 기존 WO</td>
+<td style="text-align: left;">이미 배정된 건 유지 (재배정 권장)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-teamname-immutable">4.3 Team.name Immutable 강제</h3>
+<ul>
+<li><code>PATCH /admin/teams/{id}</code> 요청 body에 <code>name</code> 포함 시 → <strong>서버가 해당 필드를 무시</strong>하고 나머지 필드만 업데이트</li>
+<li>400 에러가 아닌 <strong>Silent ignore</strong> (클라이언트에서 <code>name</code> 편집 UI 자체를 비활성화하여 방지)</li>
+</ul>
+<hr />
+<h2 id="5-phase-1">📘 5. 권한 가드 예시 (필수, Phase 1)</h2>
+<p>서버는 모든 API에서 RBAC를 <strong>반드시</strong> 강제한다. (UI에서 숨겨도 서버가 최종 방어)</p>
+<h3 id="51">5.1 원칙</h3>
+<ul>
+<li><strong>Admin = ORG</strong>: 조직 전체 데이터 접근 가능</li>
+<li><strong>Team Manager = TEAM</strong>: <code>assigned_team_id = my_team_id</code> 범위만</li>
+<li><strong>Technician = SELF</strong>: <code>assigned_technician_id = me</code> 범위만</li>
+</ul>
+<h3 id="52-1-technician-self">5.2 예시 1) Technician 내 작업 목록: SELF 강제</h3>
+<p><code>GET /me/workorders</code></p>
+<ul>
+<li>서버는 토큰의 <code>user_id</code>를 기준으로 <strong>반드시</strong> 아래 조건을 적용한다.</li>
+<li><code>workorder.assigned_technician_id = me</code></li>
+<li>클라이언트가 임의로 <code>assigned_technician_id</code>를 넘기거나 조작해도 무시한다.</li>
+</ul>
+<h3 id="53-2-team-manager-team">5.3 예시 2) Team Manager 기사 목록/관리: TEAM 강제</h3>
+<p><code>GET /team/technicians</code>
+<code>POST /team/technicians</code>
+<code>PATCH /team/technicians/{id}</code></p>
+<ul>
+<li>조회/수정 대상 <code>User.team_id</code>가 <strong>반드시</strong> <code>my_team_id</code>여야 한다.</li>
+<li>Team Manager는 <strong>다른 팀</strong> 기사 정보를 조회/수정/비활성화할 수 없다.</li>
+</ul>
+<h3 id="54-3-team-manager-team">5.4 예시 3) Team Manager 팀 작업함: TEAM 강제</h3>
+<p><code>GET /team/workorders</code></p>
+<ul>
+<li>조회 조건: <code>workorder.assigned_team_id = my_team_id</code></li>
+<li>(정책 토글) 기사 재배정이 허용된 경우에도 TEAM 범위를 벗어난 배정은 불가</li>
+</ul>
+<h3 id="55-4-admin-org">5.5 예시 4) Admin 팀 관리/통계: ORG 강제</h3>
+<p><code>GET /admin/teams</code>
+<code>POST /admin/teams</code>
+<code>GET /admin/teams/{id}/stats</code></p>
+<ul>
+<li>Admin은 ORG 범위 접근 가능</li>
+<li>다만 팀 비활성화/정책 변경은 <strong>Audit 대상(Phase 2)</strong> 로 분리 가능</li>
+</ul>
+<h3 id="56-5">5.6 예시 5) 비활성 계정/팀 처리 (권장)</h3>
+<ul>
+<li><code>User.status = INACTIVE</code> 이면 로그인/토큰 갱신을 차단한다.</li>
+<li><code>Team.status = INACTIVE</code> 인 팀의 신규 배정/진행 전이는 정책에 따라 차단한다.</li>
+</ul>
+<hr />
+<h2 id="product-catalog-api-gate-2-phase-1x">Product Catalog 확장 API 최소 세트 (Gate 2 후보 / Phase 1.x)</h2>
+<blockquote>
+<p>가격/재고 제외. 분류/상품 관리 + WorkOrder 상품 선택/조회 중심.</p>
+</blockquote>
+<h3 id="1-productcategory-api-admin">1) ProductCategory API (Admin)</h3>
+<h4 id="get-product-categories">GET /product-categories</h4>
+<ul>
+<li>목적: 분류 목록 조회 (Admin 관리 화면 / WorkOrder 상품선택 필터)</li>
+<li>권한: Admin (ORG), 필요 시 TM 조회 허용 가능</li>
+<li>query (예시):</li>
+<li>is_active=true|false</li>
+<li>q=검색어</li>
+<li>page, page_size</li>
+</ul>
+<h4 id="post-product-categories">POST /product-categories</h4>
+<ul>
+<li>목적: 분류 생성</li>
+<li>권한: Admin</li>
+<li>body (예시): name, code, sort_order</li>
+</ul>
+<pre><code class="language-JSON">{
+&quot;name&quot;: &quot;공기살균기&quot;,
+&quot;code&quot;: &quot;STERILIZER&quot;,
+&quot;sort_order&quot;: 10
+}
+</code></pre>
+<h4 id="patch-product-categoriescategoryid">PATCH /product-categories/{categoryId}</h4>
+<ul>
+<li>목적: 분류 수정/비활성</li>
+<li>권한: Admin</li>
+<li>body (예시): name, is_active</li>
+</ul>
+<pre><code class="language-JSON">{
+&quot;name&quot;: &quot;공기살균정화기&quot;,
+&quot;is_active&quot;: true
+}
+</code></pre>
+<h4 id="delete-product-categoriescategoryid">DELETE /product-categories/{categoryId} (선택)</h4>
+<ul>
+<li>목적: 삭제 시도 (실제로는 비활성 처리 권장)</li>
+<li>권한: Admin</li>
+<li>정책:</li>
+<li>하위 활성 상품 존재 시 삭제 거부(409) 권장</li>
+</ul>
+<h3 id="2-product-api-admin">2) Product API (Admin 중심)</h3>
+<h4 id="get-products">GET /products</h4>
+<ul>
+<li>목적: 상품 목록 조회</li>
+<li>권한: Admin / (TM 조회 허용 가능)</li>
+<li>query (예시):</li>
+<li>category_id</li>
+<li>is_active=true|false</li>
+<li>q=검색어</li>
+<li>page, page_size</li>
+</ul>
+<h4 id="post-products">POST /products</h4>
+<ul>
+<li>목적: 상품 생성</li>
+<li>권한: Admin</li>
+<li>body (예시): category_id, name, model_name, sku, description, primary_image_file_id</li>
+</ul>
+<pre><code class="language-JSON">{
+&quot;category_id&quot;: &quot;cat_001&quot;,
+&quot;name&quot;: &quot;OH 라디컬 공기살균기 A1&quot;,
+&quot;model_name&quot;: &quot;A1&quot;,
+&quot;sku&quot;: &quot;OH-A1&quot;,
+&quot;description&quot;: &quot;기본형 모델&quot;,
+&quot;primary_image_file_id&quot;: &quot;file_123&quot;
+}
+</code></pre>
+<h4 id="patch-productsproductid">PATCH /products/{productId}</h4>
+<ul>
+<li>목적: 상품 수정/비활성</li>
+<li>권한: Admin</li>
+<li>body (예시): name, is_active</li>
+</ul>
+<pre><code class="language-JSON">{
+&quot;name&quot;: &quot;OH 라디컬 공기살균기 A1 (개정)&quot;,
+&quot;is_active&quot;: true
+}
+</code></pre>
+<h4 id="delete-productsproductid">DELETE /products/{productId} (선택)</h4>
+<ul>
+<li>목적: 삭제 시도</li>
+<li>권한: Admin</li>
+<li>정책:</li>
+<li>WorkOrder 연결 이력 존재 시 삭제 거부(409) 권장</li>
+<li>Phase 1.x는 비활성 처리 우선</li>
+</ul>
+<h3 id="3-workorder-api">3) WorkOrder 상품 선택/조회 API</h3>
+<h4 id="get-workordersworkorderidproducts">GET /workorders/{workOrderId}/products</h4>
+<ul>
+<li>목적: 해당 WorkOrder에 연결된 상품 목록 조회</li>
+<li>권한:</li>
+<li>Admin (ORG)</li>
+<li>TM (TEAM scope)</li>
+<li>
+<p>Technician (SELF scope, 본인 배정 건)</p>
+</li>
+<li>
+<p>응답 예시</p>
+</li>
+</ul>
+<pre><code class="language-JSON">{
+&quot;items&quot;: [
+{
+&quot;id&quot;: &quot;wop_001&quot;,
+&quot;product_id&quot;: &quot;prod_101&quot;,
+&quot;product_name&quot;: &quot;OH 라디컬 공기살균기 A1&quot;,
+&quot;category_name&quot;: &quot;공기살균기&quot;,
+&quot;quantity&quot;: 1,
+&quot;note&quot;: &quot;거실 벽면 설치&quot;
+}
+]
+}
+</code></pre>
+<h4 id="put-workordersworkorderidproducts">PUT /workorders/{workOrderId}/products</h4>
+<ul>
+<li>목적: WorkOrder 연결 상품 전체 교체 (간단한 MVP 방식)</li>
+<li>권한: Admin (Phase 1.x 기본)</li>
+<li>body 예시</li>
+</ul>
+<pre><code class="language-JSON">{
+&quot;items&quot;: [
+{
+&quot;product_id&quot;: &quot;prod_101&quot;,
+&quot;quantity&quot;: 1,
+&quot;note&quot;: &quot;거실 벽면 설치&quot;
+},
+{
+&quot;product_id&quot;: &quot;prod_205&quot;,
+&quot;quantity&quot;: 2,
+&quot;note&quot;: &quot;필터 예비분&quot;
+}
+]
+}
+</code></pre>
+<ul>
+<li>서버 검증:</li>
+<li>비활성 상품 선택 불가</li>
+<li>중복 product_id 처리 정책 정의 (합치기 또는 400)</li>
+<li>WorkOrder 상태별 수정 허용 범위 정책 확인</li>
+</ul>
+<p>MVP에선 PUT 전체교체가 구현 단순성 측면에서 유리.
+추후 POST/PATCH/DELETE /workorder-products/{id} 세분화 가능.</p>
+<h3 id="4_1">4) 이미지 업로드 연계 (선택)</h3>
+<h4 id="post-files-api">POST /files (기존 파일 업로드 API 재사용)</h4>
+<ul>
+<li>목적: 상품 대표 이미지 업로드</li>
+<li>권한: Admin</li>
+<li>결과: FileObject.id 반환 → Product 생성/수정 시 참조</li>
+</ul>
+<h3 id="5">5) 오류 코드/정책 예시</h3>
+<ul>
+<li>403 FORBIDDEN</li>
+<li>RBAC 스코프 위반 (TM/Technician의 상품 수정 시도)</li>
+<li>404 NOT_FOUND</li>
+<li>존재하지 않는 category/product/workorder</li>
+<li>409 CONFLICT</li>
+<li>분류 삭제 불가(하위 활성 상품 존재)</li>
+<li>상품 삭제 불가(WorkOrder 연결 이력 존재)</li>
+<li>상태 정책상 WorkOrder 상품 수정 불가</li>
+<li>422 UNPROCESSABLE_ENTITY</li>
+<li>필수값 누락 / invalid quantity / 비활성 상품 선택 시도</li>
+</ul>
+<hr />
+<h2 id="_1">공통 규칙</h2>
+<ul>
+<li><strong>Base URL:</strong> <code>/api/v1</code></li>
+<li><strong>인증:</strong> <code>Authorization: Bearer &lt;token&gt;</code></li>
+<li><strong>공통 응답 포맷:</strong></li>
+</ul>
+<pre><code class="language-json">{
+  &quot;ok&quot;: true,
+  &quot;data&quot;: { ... },
+  &quot;message&quot;: null,
+  &quot;error_code&quot;: null
+}
+</code></pre>
+<hr />
+<h2 id="_2">연관 문서</h2>
+<ul>
+<li><a href="../03-api/">WorkOrder API 명세서</a></li>
+<li><a href="../../20-product/00-rbac/">권한 매트릭스(RBAC)</a></li>
+<li><a href="../../10-domain/05-org-team-profile/">Org/Team 프로필</a></li>
+</ul>
+<h2 id="_3">변경 이력</h2>
+<ul>
+<li><strong>v0.2:</strong> 신규 작성 — Auth/Admin(Team)/TM(Technician) API 최소세트, 가드 규칙 (2026-02-23)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
